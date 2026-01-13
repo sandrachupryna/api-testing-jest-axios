@@ -1,0 +1,33 @@
+{
+  "name": "api-testing-jest-axios",
+  "version": "1.0.0",
+  "description": "Test version of API Automation Framework with Jest and Axios",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandrachupryna/api-testing-jest-axios.git"
+  },
+  "keywords": [
+    "api",
+    "testing",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sandrachupryna/api-testing-jest-axios/issues"
+  },
+  "homepage": "https://github.com/sandrachupryna/api-testing-jest-axios#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3"
+  }
+}
