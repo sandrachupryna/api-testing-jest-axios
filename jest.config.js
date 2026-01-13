@@ -15,4 +15,15 @@ module.exports = {
 
   // Файл для початкової настройки перед виконанням тестів
   setupFiles: ["./tests/setup.js"],
+
+  // Репортери для звітів про тести
+  reporters: [
+    "default",
+    ["jest-html-reporters", {
+      publicPath: "./html-reports",
+      filename: "report.html",
+      openReport: true,
+      expand: true
+    }]
+  ],
 };
