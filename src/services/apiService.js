@@ -1,5 +1,6 @@
 const httpClient = require('./httpClient');
 const endpoints = require('../config/endpoints');
+const httpErrorHandler = require('../utils/httpErrorHandler');
 
 class ApiService {
   async #get(url, params = {}) {
@@ -7,7 +8,7 @@ class ApiService {
       const response = await httpClient.get(url, { params });
       return response;
     } catch (error) {
-      throw error;
+      return httpErrorHandler(error);
     }
   }
   
@@ -16,7 +17,7 @@ class ApiService {
       const response = await httpClient.post(url, data);
       return response;
     } catch (error) {
-      throw error;
+      return httpErrorHandler(error);
     } 
   }
 
@@ -25,7 +26,7 @@ class ApiService {
       const response = await httpClient.put(url, data);
       return response;
     } catch (error) {
-      throw error;
+      return httpErrorHandler(error);
     }
   }
 
@@ -34,7 +35,7 @@ class ApiService {
       const response = await httpClient.delete(url);
       return response;
     } catch (error) {
-      throw error;
+      return httpErrorHandler(error);
     }
   }
   
@@ -57,6 +58,20 @@ class ApiService {
   async deletePost(id) {
     return this.#delete(endpoints.postById(id));
   }
+
+  async getInvalidEndpoint() {
+    return this.#get(`${endpoints.posts}-invalid-endpoint`);
+  }
+
+  async getFromInvalidDomain() {
+    try {
+      const response = await httpClient.get('https://invalid.domain/posts');
+      return response;
+    } catch (error) {
+      return httpErrorHandler(error);
+    }
+  }
 }
+
 
 module.exports = new ApiService();

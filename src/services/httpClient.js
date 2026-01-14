@@ -38,9 +38,18 @@ httpClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error(chalk.redBright.bold('[RESPONSE ERROR]', error));
-    return Promise.reject(error);
-  }
+    if (error.response) { 
+      console.error(chalk.redBright.bold('[REQUEST FAILED]', error.response.status, JSON.stringify(error.response.statusText, null, 2)));
+      if (error.response.data) {
+        console.error(chalk.redBright('[RESPONSE DATA]', JSON.stringify(error.response.data, null, 2)));
+      }
+    } else if (error.request) { 
+      console.error(chalk.redBright.bold('[NETWORK ERROR]', JSON.stringify(error.message, null, 2)));
+    } else { 
+      console.error(chalk.redBright.bold('[UNKNOWN ERROR]', JSON.stringify(error.message, null, 2)));
+    }
+      return Promise.reject(error);
+    }
 )
 
 module.exports = httpClient;
