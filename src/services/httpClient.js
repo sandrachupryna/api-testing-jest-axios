@@ -17,6 +17,10 @@ httpClient.interceptors.request.use(
       console.log(chalk.yellowBright.bold(`[REQUEST PARAMS]`));
       console.log(chalk.yellow(JSON.stringify(request.params, null, 2)));
     }
+    if (request.headers) {
+      console.log(chalk.yellowBright.bold(`[REQUEST HEADERS]`));
+      console.log(chalk.yellow(JSON.stringify(request.headers, null, 2)));
+    }
     if (request.data) {
       console.log(chalk.cyanBright.bold(`[REQUEST DATA]`));
       console.log(chalk.cyan(JSON.stringify(request.data, null, 2)));

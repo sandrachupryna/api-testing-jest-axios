@@ -1,11 +1,10 @@
 const httpClient = require('./httpClient');
 const endpoints = require('../config/endpoints');
 const httpErrorHandler = require('../utils/httpErrorHandler');
-
 class ApiService {
-  async #get(url, params = {}) {
+  async #get(url, params = {}, headers = {}) {
     try {
-      const response = await httpClient.get(url, { params });
+      const response = await httpClient.get(url, { params, headers });
       return response;
     } catch (error) {
       return httpErrorHandler(error);
@@ -39,8 +38,8 @@ class ApiService {
     }
   }
   
-  async getAllPosts() {
-    return this.#get(endpoints.posts);
+  async getAllPosts(params = {}, headers = {}) {
+    return this.#get(endpoints.posts, params, headers);
   }
 
   async getPostById(id) {
