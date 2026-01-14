@@ -1,4 +1,3 @@
-const { de } = require('@faker-js/faker');
 const apiService = require('../../src/services/apiService');
 
 describe('GET /posts', () => {
