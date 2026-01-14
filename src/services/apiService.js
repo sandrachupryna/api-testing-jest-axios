@@ -1,8 +1,6 @@
 const httpClient = require('./httpClient');
 const endpoints = require('../config/endpoints');
 const httpErrorHandler = require('../utils/httpErrorHandler');
-const { he } = require('@faker-js/faker');
-
 class ApiService {
   async #get(url, params = {}, headers = {}) {
     try {
