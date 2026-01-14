@@ -23,7 +23,9 @@ module.exports = {
       publicPath: "./html-reports",
       filename: "report.html",
       openReport: true,
-      expand: true
+      expand: true,
+      includeFailureMsg: true,
+      includeConsoleLog: true, // if true, run Jest with --verbose=false 
     }]
   ],
 };
